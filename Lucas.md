@@ -18,16 +18,17 @@ Ackermann 函數 A(m, n)
 以下為主要程式碼：
 
 ```cpp
+
 #include <iostream>
 using namespace std;
 
-int ackermann_recursive(int m, int n) {
+int a(int m, int n) {
     if (m == 0) return n + 1;
-    if (n == 0) return ackermann_recursive(m - 1, 1);
-    return ackermann_recursive(m - 1, ackermann_recursive(m, n - 1));
+    if (n == 0) return a(m - 1, 1);
+    return a(m - 1, a(m, n - 1));
 }
 
-int ackermann_nonrecursive(int m, int n) {
+int b(int m, int n) {
     int result = n + 1;
     while (m > 0 || n > 0) {
         if (m == 0) {
@@ -54,13 +55,14 @@ int main() {
     cout << "請輸入 n: ";
     cin >> n;
     try {
-        cout << "A(" << m << ", " << n << ") 遞迴結果: " << ackermann_recursive(m, n) << endl;
-        cout << "A(" << m << ", " << n << ") 非遞迴結果: " << ackermann_nonrecursive(m, n) << endl;
+        cout << "A(" << m << ", " << n << ") 遞迴結果: " << a(m, n) << endl;
+        cout << "A(" << m << ", " << n << ") 非遞迴結果: " << b(m, n) << endl;
     } catch (const char* msg) {
         cout << msg << endl;
     }
     return 0;
 }
+
 ```
 
 ## 效能分析
