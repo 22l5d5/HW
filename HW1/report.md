@@ -110,7 +110,7 @@ A(2, 2) 遞迴結果: 7
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 10; 
+const int MAX_SIZE = 10; // 定義最大元素數量
 
 void powerset_recursive(int set[], int n, int index, int current[], int currentSize, int result[][MAX_SIZE], int& resultCount) {
     if (index == n) {
@@ -118,14 +118,14 @@ void powerset_recursive(int set[], int n, int index, int current[], int currentS
             result[resultCount][i] = current[i];
         }
         for (int i = currentSize; i < MAX_SIZE; i++) {
-            result[resultCount][i] = 0; 
+            result[resultCount][i] = 0; // 填充剩餘部分為 0
         }
         resultCount++;
         return;
     }
-    
+    // 排除當前元素
     powerset_recursive(set, n, index + 1, current, currentSize, result, resultCount);
-    
+    // 包含當前元素
     current[currentSize] = set[index];
     powerset_recursive(set, n, index + 1, current, currentSize + 1, result, resultCount);
 }
@@ -157,7 +157,7 @@ int main() {
         cin >> set[i];
     }
     int current[MAX_SIZE] = {0};
-    int result[MAX_SIZE * MAX_SIZE][MAX_SIZE] = {0};
+    int result[MAX_SIZE * MAX_SIZE][MAX_SIZE] = {0}; // 假設最多 2^n 個子集
     int resultCount = 0;
     try {
         powerset_recursive(set, n, 0, current, 0, result, resultCount);
