@@ -176,9 +176,13 @@ int main() {
 
 ### 編譯與執行指令
 $ g++ -std=c++17 -o powerset powerset.cpp
+
 $ ./powerset
+
 請輸入集合元素數量: 3
+
 請輸入 3 個元素: 1 2 3
+
 { }
 { 1 }
 { 2 }
