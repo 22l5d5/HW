@@ -20,28 +20,23 @@ Ackermann 函數 A(m, n)，規則如下
 ## 程式實作
 
 ```cpp
-
 #include <iostream>
 using namespace std;
 
 int ac(int m, int n) {
-    int result = n + 1;
-    while (m > 0 || n > 0) {
-        if (m == 0) {
-            result = n + 1;
-            break;
+    if (m == 0) {
+        return n + 1;
+    } else if (m == 1) {
+        return n + 2;
+    } else if (m == 2) {
+        return 2 * n + 3;
+    } else if (m == 3) {
+        int result = 2;
+        for (int i = 0; i <= n; i++) {
+            result = 2 * result;
         }
-        if (n == 0) {
-            m--;
-            n = 1;
-        } else {
-            m--;
-            int temp = n;
-            n = result - 1;
-            result = temp;
-        }
-    }
-    return result;
+        return result - 3;
+    } 
 }
 
 int main() {
@@ -50,13 +45,13 @@ int main() {
     cin >> m;
     cout << "請輸入 n: ";
     cin >> n;
-    try {
-        cout << "A(" << m << ", " << n << ") 結果: " << ac(m, n) << endl;
-    } catch (const char* msg) {
-        cout << msg << endl;
-    }
+
+    int result = ac(m, n);
+   
+    cout << "A(" << m << ", " << n << ") = " << result << endl;
+
     return 0;
-}
+} 
 ```
 
 ## 效能分析
