@@ -1,10 +1,20 @@
 #include <iostream>
 using namespace std;
 
-int a(int m, int n) {
-    if (m == 0) return n + 1;
-    if (n == 0) return a(m - 1, 1);
-    return a(m - 1, a(m, n - 1));
+int ac(int m, int n) {
+    if (m == 0) {
+        return n + 1;
+    } else if (m == 1) {
+        return n + 2;
+    } else if (m == 2) {
+        return 2 * n + 3;
+    } else if (m == 3) {
+        int result = 2;
+        for (int i = 0; i <= n; i++) {
+            result = 2 * result;
+        }
+        return result - 3;
+    } 
 }
 
 int main() {
@@ -13,11 +23,10 @@ int main() {
     cin >> m;
     cout << "請輸入 n: ";
     cin >> n;
-    try {
-        cout << "A(" << m << ", " << n << ") 遞迴結果: " << a(m, n) << endl;
-    } catch (const char* msg) {
-        cout << msg << endl;
-    }
-    return 0;
-}
 
+    int result = ac(m, n);
+   
+    cout << "A(" << m << ", " << n << ") = " << result << endl;
+
+    return 0;
+} 
