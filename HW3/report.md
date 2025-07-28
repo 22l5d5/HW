@@ -13,7 +13,7 @@
 - (g) `Polynomial operator-(const Polynomial& b) const`：返回 \( *this - b \)。
 - (h) `Polynomial operator*(const Polynomial& b) const`：返回 \( *this * b \)。
 - (i) `float Polynomial::Evaluate(float x) const`：評估 \( *this \) 在 \( x \) 處的值。
-- 截止日期為 2025年8月10日。
+
 
 ### 1.2 解題策略
 - **類設計**：使用結構 `Node` 表示鏈表節點，包含 `coef`、`exp` 和 `link`，並通過 `Polynomial` 類管理頭節點和可用空間鏈表。
