@@ -9,9 +9,9 @@
 - (c) `Polynomial::Polynomial(const Polynomial& a)`：複製建構函數，將 \( a \) 複製到 \( *this \)。
 - (d) `const Polynomial& Polynomial::operator=(const Polynomial& a)`：賦值運算子，將 \( a \) 賦值給 \( *this \)。
 - (e) `Polynomial::~Polynomial()`：解構函數，將 \( *this \) 的所有節點歸還至可用空間鏈表。
-- (f) `Polynomial operator+(const Polynomial& b) const`：返回 \( *this + b \)。
-- (g) `Polynomial operator-(const Polynomial& b) const`：返回 \( *this - b \)。
-- (h) `Polynomial operator*(const Polynomial& b) const`：返回 \( *this * b \)。
+- (f) `Polynomial operator+(const Polynomial& b) const`：回傳 \( *this + b \)。
+- (g) `Polynomial operator-(const Polynomial& b) const`：回傳 \( *this - b \)。
+- (h) `Polynomial operator*(const Polynomial& b) const`：回傳 \( *this * b \)。
 - (i) `float Polynomial::Evaluate(float x) const`：評估 \( *this \) 在 \( x \) 處的值。
 
 
