@@ -179,7 +179,7 @@ std::istream& operator>>(std::istream& is, Polynomial& poly) {
 
 int main() {
     Polynomial p;
-    std::cout << "輸入項數 (或直接輸入係數和指數直到 EOF):" << std::endl;
+    std::cout << "輸入項數:" << std::endl;
     std::cin >> p;
     std::cout << "多項式: " << p;
     Polynomial q;
