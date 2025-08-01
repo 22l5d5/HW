@@ -116,15 +116,28 @@ public:
         return is;
     }
     friend std::ostream& operator<<(std::ostream& os, const Polynomial& x) {
-        if (x.header == nullptr) {
+        if (x.header == nullptr || x.header->link == x.header) {
             os << "0" << std::endl;
             return os;
         }
-        int count = 0;
+        bool first = true;
         Node* current = x.header->link;
         while (current != x.header) {
-            if (count++ > 0) os << ", ";
-            os << current->coef << " " << current->exp;
+            if (current->coef == 0) {
+                current = current->link;
+                continue;
+            }
+            if (!first && current->coef > 0) os << "+";
+            if (current->exp == 0) {
+                os << current->coef;
+            } else if (current->exp == 1) {
+                os << current->coef << "x";
+            } else if (current->exp > 0) {
+                os << current->coef << "x^" << current->exp;
+            } else { // 負指數
+                os << current->coef << "/x^" << -current->exp;
+            }
+            first = false;
             current = current->link;
         }
         os << std::endl;
@@ -260,6 +273,22 @@ public:
         }
     }
 };
+
+int main() {
+    Polynomial p;
+    std::cout << "輸入項數 (或直接輸入係數和指數直到 EOF):" << std::endl;
+    std::cin >> p;
+    std::cout << "多項式: " << p;
+    Polynomial q;
+    std::cin >> q;
+    std::cout << "另一個多項式: " << q;
+    Polynomial sum = p + q;
+    std::cout << "加法結果: " << sum;
+    Polynomial product = p * q;
+    std::cout << "乘法結果: " << product;
+    std::cout << "在 x = 2 時的評估值: " << p.Evaluate(2) << std::endl;
+    return 0;
+}
 ```
 ## 3. 效能分析
 
