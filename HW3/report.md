@@ -14,7 +14,6 @@
 - (h) `Polynomial operator*(const Polynomial& b) const`：回傳 \( *this * b \)。
 - (i) `float Polynomial::Evaluate(float x) const`：評估 \( *this \) 在 \( x \) 處的值。
 
-
 ### 1.2 解題策略
 - **類設計**：使用結構 `Node` 表示鏈表節點，包含 `coef`、`exp` 和 `link`，並通過 `Polynomial` 類管理頭節點和可用空間鏈表。
 - **輸入輸出實現**：`operator>>` 根據輸入序列建立循環鏈表，`operator<<` 遍歷鏈表生成外部表示。
@@ -127,11 +126,13 @@ public:
                 current = current->link;
                 continue;
             }
-            if (!first && current->coef > 0) os << "+";
+            if (!first && current->coef > 0) os << " + ";
             if (current->exp == 0) {
                 os << current->coef;
             } else if (current->exp == 1) {
-                os << current->coef << "x";
+                if (current->coef == 1) os << "x";
+                else if (current->coef == -1) os << "-x";
+                else os << current->coef << "x";
             } else if (current->exp > 0) {
                 os << current->coef << "x^" << current->exp;
             } else { // 負指數
